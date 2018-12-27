@@ -6,7 +6,9 @@
   "dependencies": {
     "express": "^4.16.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "elm": "^0.19.0-bugfix2"
+  },
   "scripts": {
     "start": "npm run build && npm run server",
     "build": "elm make src/Main.elm --optimize --output server/elm.js",

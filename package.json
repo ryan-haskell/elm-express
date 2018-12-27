@@ -1,0 +1,29 @@
+{
+  "name": "elm-express",
+  "version": "1.0.0",
+  "description": "An experiment in using Elm on the backend.",
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm run build && npm run server",
+    "build": "elm make src/Main.elm --optimize --output server/elm.js",
+    "server": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryannhg/elm-express.git"
+  },
+  "keywords": [
+    "elm",
+    "express"
+  ],
+  "author": "Ryan Haskell-Glatz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryannhg/elm-express/issues"
+  },
+  "homepage": "https://github.com/ryannhg/elm-express#readme"
+}

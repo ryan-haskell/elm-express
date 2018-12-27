@@ -3,10 +3,11 @@ module Main exposing (main)
 import Express exposing (Route)
 
 
+main : Express.Application
 main =
-    Express.program
+    Express.application
         [ Route "/"
-            (always "<h1>Homepage</h1>")
+            (\req -> "<h1>Homepage</h1>")
         , Route "/people"
-            (always "<h1>People</h1><h2>They're neat!</h2>")
+            (\req -> "<h1>People</h1><h2>They're neat!</h2>")
         ]

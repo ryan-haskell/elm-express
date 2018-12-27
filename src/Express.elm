@@ -1,6 +1,10 @@
-port module Express exposing (Request, Route, program)
+port module Express exposing (Application, Request, Route, application)
 
 import Platform
+
+
+type alias Application =
+    Program Flags Model Msg
 
 
 type alias Flags =
@@ -17,8 +21,8 @@ type Msg
     = Handle Request
 
 
-program : List Route -> Program Flags Model Msg
-program routes =
+application : List Route -> Application
+application routes =
     Platform.worker
         { init = init routes
         , update = update

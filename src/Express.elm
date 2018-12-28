@@ -1,6 +1,7 @@
-port module Express exposing (Application, Request, Route, application)
+port module Express exposing (Application, Request, Route, WebResponse(..), application)
 
 import Platform
+import Ssr.Html
 
 
 type alias Application =
@@ -58,7 +59,15 @@ getContent request routes =
     routes
         |> List.filter (\route -> route.path == request.path)
         |> List.head
-        |> Maybe.map (\route -> route.handler request)
+        |> Maybe.map
+            (\route ->
+                case route.handler request of
+                    Html html ->
+                        Ssr.Html.toString html
+
+                    PlainText text ->
+                        text
+            )
 
 
 subscriptions : Model -> Sub Msg
@@ -68,8 +77,13 @@ subscriptions model =
 
 type alias Route =
     { path : String
-    , handler : Request -> String
+    , handler : Request -> WebResponse
     }
+
+
+type WebResponse
+    = Html Ssr.Html.Html
+    | PlainText String
 
 
 type alias SimpleRoute =

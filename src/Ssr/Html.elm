@@ -15,6 +15,7 @@ module Ssr.Html exposing
     , html
     , link
     , meta
+    , node
     , p
     , script
     , text
@@ -27,6 +28,10 @@ import Ssr.VirtualDom as VirtualDom exposing (Node, childlessNode, node, text)
 
 type alias Html =
     Node
+
+
+node =
+    VirtualDom.node
 
 
 
@@ -54,7 +59,7 @@ meta =
 
 
 script =
-    childlessNode "script"
+    node "script"
 
 
 body =
